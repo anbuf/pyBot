@@ -33,7 +33,7 @@ def REDDIT(keyword):
     subreddit = tagline.find("a", {"class": "subreddit hover"})
     
     s.send("PRIVMSG %s :Sujet: %s, votes: %s, %s \r\n" % (chat, firstArticle.get_text(), vote.get_text(), subreddit.get_text()))
-    
+
 def BI(keyword):
     chat = str(keyword)
     
@@ -315,7 +315,7 @@ def get_commands():
                         continue
                     
                     if(command == "~REDDIT"):
-                        print("WIKI command from " + nickname + " in chat with " + chat)
+                        print("REDDIT command from " + nickname + " in chat with " + chat)
                         REDDIT(chat)
                         continue
                         
