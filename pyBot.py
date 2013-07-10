@@ -7,7 +7,7 @@ import signal
 import re
 import ConfigParser
 import os
-import psutil
+#import psutil
 import platform
 import gdata.youtube # Install gdata and elementtree modules
 import gdata.youtube.service
@@ -29,8 +29,10 @@ def REDDIT(keyword):
     siteTable = bs.find("div", {"id": "siteTable"})
     vote = siteTable.find("div", {"class": "score unvoted"})
     firstArticle = siteTable.div.find("p", {"class": "title"})
+    tagline = siteTable.find("p", {"class": "tagline"})
+    subreddit = tagline.find("a", {"class": "subreddit hover"})
     
-    s.send("PRIVMSG %s :Sujet: %s, votes: %s\n" % (chat, firstArticle.get_text(), vote.get_text()))
+    s.send("PRIVMSG %s :Sujet: %s, votes: %s, %s \r\n" % (chat, firstArticle.get_text(), vote.get_text(), subreddit.get_text()))
     
 def BI(keyword):
     chat = str(keyword)
